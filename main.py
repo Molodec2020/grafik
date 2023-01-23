@@ -1,13 +1,21 @@
-from kivymd.app import MDApp
-from kivymd.uix.label import MDLabel
+from kivymd.app import App
+from kivy.lang import Builder
+from kivymd.uix.boxlayout import BoxLayout
 
-class MainApp(MDApp):
+KV = '''
+MyBox:
+    Button:
+        text: 'Button_1'
+        
+'''
+
+class MyBox(BoxLayout):
+    pass
+
+
+class MainApp(App):
     def build(self):
-        self.icon = "title.png"
-        self.title = "График работы"
-        label = MDLabel(text="Добро пожаловать", halign="center")
-        return label
+        return Builder.load_string(KV)
 
 if __name__ == '__main__':
-    app = MainApp()
-    app.run()
+    MainApp().run()
